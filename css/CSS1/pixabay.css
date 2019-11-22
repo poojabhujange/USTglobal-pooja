@@ -1,0 +1,84 @@
+img{
+    width: 258px;
+    height:200px;
+    /* border: 1px solid black; */
+    padding: 10px;
+    /* border-radius: 20px; */
+    margin-left: 10px;
+    margin-top: 10px;
+    /* box-shadow: 0 0 15px aqua; */
+    /* transition: all 2s;for zooming slow or fast */
+}
+h1{
+    text-align: start;
+    color:black;
+
+}
+label{
+    font-size: 20px;
+}
+#hh1{
+    text-align: center;
+    color: rgb(10, 9, 9);
+}
+h5{
+    text-align: center;
+    color: rgb(29, 28, 28);
+}
+input{
+    width: 500px;
+    height: 30px;
+    margin-left: 500px;
+}
+#back{
+    background-image: url("/IMAGE/iceberg-4499262__480.jpg");
+    background-size: cover;
+}
+button{
+    margin-left:500px;
+    font-size: 20px;
+   background-color: green;
+   background-size: 250px;
+   color: aliceblue;
+   padding-left: 25px;
+   padding-right: 25px;
+   padding:20px;
+   border-color: green;
+   border-radius: 10px;
+   margin: none;
+   outline: none;
+}
+
+h2{
+    font-size: 30px;
+    font-family: 'Times New Roman';
+    color: rgb(80, 78, 78);
+    text-align: center;
+    
+}
+
+p{
+    text-align: center;
+
+}
+
+#but{
+     background-color: white;
+     width: 100px;
+     height: 50px;
+     margin-left: 500px;
+     padding: 10px;
+     border-radius: 15px;
+
+}
+
+#but2{
+    background-color: white;
+    width: 100px;
+    height: 50px;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 15px;
+
+}
+
