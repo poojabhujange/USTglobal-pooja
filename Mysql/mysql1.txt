@@ -1,0 +1,443 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 5.7.27-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| product            |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use product;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_product |
++-------------------+
+| emp               |
+| employee          |
+| product_info      |
++-------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc emp;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| Eid         | int(11)      | NO   | PRI | NULL    |       |
+| Ename       | varchar(30)  | NO   |     | NULL    |       |
+| DOB         | date         | NO   |     | NULL    |       |
+| Age         | int(11)      | YES  |     | NULL    |       |
+| Dofjoin     | date         | YES  |     | NULL    |       |
+| bloodgroup  | varchar(10)  | YES  |     | NULL    |       |
+| mobail_no   | int(11)      | YES  | UNI | NULL    |       |
+| deptno      | int(11)      | YES  |     | NULL    |       |
+| salary      | int(11)      | YES  |     | NULL    |       |
+| email       | varchar(30)  | YES  |     | NULL    |       |
+| gender      | char(10)     | YES  |     | NULL    |       |
+| desgination | varchar(100) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+12 rows in set (0.00 sec)
+
+mysql> insert into emp(Eid,Ename,DOB,Age,Dofjoin,bloodgroup,mobail_no,deptno,salary, email,gender,desgination) values(8,'avinah','1994-10-20',27,'2017-3-10','o-',23335678,10,10000,'avinash@gmail.com','M','Clark');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into emp(Eid,Ename,DOB,Age,Dofjoin,bloodgroup,mobail_no,deptno,salary, email,gender,desgination) values(9,'mahadavi','1994-10-20',27,'2017-3-10','B-',93334678,20,15000,'avi34@gmail.com','f','tech support');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into emp(Eid,Ename,DOB,Age,Dofjoin,bloodgroup,mobail_no,deptno,salary, email,gender,desgination) values(10,'anil','1994-10-10',27,'2017-5-08','B-',93224678,10,15000,'anil34@gmail.com','M','tester');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from emp;
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+| Eid | Ename    | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email             | gender | desgination      |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+|   1 | pooja    | 1997-10-20 |   22 | 2019-10-20 | o+         |  45267891 |     10 |  20000 | pooja@gmail.com   | f      | software enginer |
+|   2 | pari     | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237691 |     20 |  20000 | pari@gmail.com    | f      | software enginer |
+|   3 | yuraj    | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237611 |     30 |  20000 | yuraj@gmail.com   | f      | tester           |
+|   4 | sachin   | 1996-10-20 |   23 | 2019-02-10 | B+         |  45137611 |     30 |  20000 | sachin@gmail.com  | f      | tester           |
+|   5 | megha    | 1996-10-20 |   23 | 2019-02-10 | B-         |  45132611 |     30 |  45000 | megha@gmail.com   | f      | HR               |
+|   6 | mahesh   | 1996-10-20 |   23 | 2019-03-10 | B-         |  12345678 |     20 |  15000 | mahesh@gmail.com  | M      | tech support     |
+|   7 | mahi     | 1994-10-20 |   27 | 2017-03-10 | o-         |  12335678 |     10 |  30000 | mahi@gmail.com    | M      | Manger           |
+|   8 | avinah   | 1994-10-20 |   27 | 2017-03-10 | o-         |  23335678 |     10 |  10000 | avinash@gmail.com | M      | Clark            |
+|   9 | mahadavi | 1994-10-20 |   27 | 2017-03-10 | B-         |  93334678 |     20 |  15000 | avi34@gmail.com   | f      | tech support     |
+|  10 | anil     | 1994-10-10 |   27 | 2017-05-08 | B-         |  93224678 |     10 |  15000 | anil34@gmail.com  | M      | tester           |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+10 rows in set (0.00 sec)
+
+mysql> truncate product_info;
+Query OK, 0 rows affected (0.28 sec)
+
+mysql> select distinct desgination from emp;
++------------------+
+| desgination      |
++------------------+
+| software enginer |
+| tester           |
+| HR               |
+| tech support     |
+| Manger           |
+| Clark            |
++------------------+
+6 rows in set (0.04 sec)
+
+mysql>
+ select distinct desgination,deptno from emp;
++------------------+--------+
+| desgination      | deptno |
++------------------+--------+
+| software enginer |     10 |
+| software enginer |     20 |
+| tester           |     30 |
+| HR               |     30 |
+| tech support     |     20 |
+| Manger           |     10 |
+| Clark            |     10 |
+| tester           |     10 |
++------------------+--------+
+8 rows in t (0.00 sec)
+
+
+mysql> select Dofjoin as dofj from emp;
++------------+
+| dofj       |
++------------+
+| 2019-10-20 |
+| 2019-10-10 |
+| 2019-10-10 |
+| 2019-02-10 |
+| 2019-02-10 |
+| 2019-03-10 |
+| 2017-03-10 |
+| 2017-03-10 |
+| 2017-03-10 |
+| 2017-05-08 |
++------------+
+10 rows in set (0.00 sec)
+
+mysql> select Dofjoin dofj from emp;
++------------+
+| dofj       |
++------------+
+| 2019-10-20 |
+| 2019-10-10 |
+| 2019-10-10 |
+| 2019-02-10 |
+| 2019-02-10 |
+| 2019-03-10 |
+| 2017-03-10 |
+| 2017-03-10 |
+| 2017-03-10 |
+| 2017-05-08 |
++------------+
+10 rows in set (0.00 sec)
+
+
+mysql> select * from emp where Eid =2;
++-----+-------+------------+------+------------+------------+-----------+--------+--------+----------------+--------+------------------+
+| Eid | Ename | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email          | gender | desgination      |
++-----+-------+------------+------+------------+------------+-----------+--------+--------+----------------+--------+------------------+
+|   2 | pari  | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237691 |     20 |  20000 | pari@gmail.com | f      | software enginer |
++-----+-------+------------+------+------------+------------+-----------+--------+--------+----------------+--------+------------------+
+1 row in set (0.03 sec)
+
+mysql> update emp set gender='M' where Eid=4;
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+| Eid | Ename    | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email             | gender | desgination      |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+|   1 | pooja    | 1997-10-20 |   22 | 2019-10-20 | o+         |  45267891 |     10 |  20000 | pooja@gmail.com   | f      | software enginer |
+|   2 | pari     | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237691 |     20 |  20000 | pari@gmail.com    | f      | software enginer |
+|   3 | yuraj    | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237611 |     30 |  20000 | yuraj@gmail.com   | M      | tester           |
+|   4 | sachin   | 1996-10-20 |   23 | 2019-02-10 | B+         |  45137611 |     30 |  20000 | sachin@gmail.com  | M      | tester           |
+|   5 | megha    | 1996-10-20 |   23 | 2019-02-10 | B-         |  45132611 |     30 |  45000 | megha@gmail.com   | f      | HR               |
+|   6 | mahesh   | 1996-10-20 |   23 | 2019-03-10 | B-         |  12345678 |     20 |  15000 | mahesh@gmail.com  | M      | tech support     |
+|   7 | mahi     | 1994-10-20 |   27 | 2017-03-10 | o-         |  12335678 |     10 |  30000 | mahi@gmail.com    | M      | Manger           |
+|   8 | avinah   | 1994-10-20 |   27 | 2017-03-10 | o-         |  23335678 |     10 |  10000 | avinash@gmail.com | M      | Clark            |
+|   9 | mahadavi | 1994-10-20 |   27 | 2017-03-10 | B-         |  93334678 |     20 |  15000 | avi34@gmail.com   | f      | tech support     |
+|  10 | anil     | 1994-10-10 |   27 | 2017-05-08 | B-         |  93224678 |     10 |  15000 | anil34@gmail.com  | M      | tester           |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+10 rows in set (0.00 sec)
+
+
+
+delete employ record whoes id is 5;
+
+mysql> delete from emp where Eid=5;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from emp;
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+| Eid | Ename    | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email             | gender | desgination      |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+|   1 | pooja    | 1997-10-20 |   22 | 2019-10-20 | o+         |  45267891 |     10 |  20000 | pooja@gmail.com   | f      | software enginer |
+|   2 | pari     | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237691 |     20 |  20000 | pari@gmail.com    | f      | software enginer |
+|   3 | yuraj    | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237611 |     30 |  20000 | yuraj@gmail.com   | M      | tester           |
+|   4 | sachin   | 1996-10-20 |   23 | 2019-02-10 | B+         |  45137611 |     30 |  20000 | sachin@gmail.com  | M      | tester           |
+|   6 | mahesh   | 1996-10-20 |   23 | 2019-03-10 | B-         |  12345678 |     20 |  15000 | mahesh@gmail.com  | M      | tech support     |
+|   7 | mahi     | 1994-10-20 |   27 | 2017-03-10 | o-         |  12335678 |     10 |  30000 | mahi@gmail.com    | M      | Manger           |
+|   8 | avinah   | 1994-10-20 |   27 | 2017-03-10 | o-         |  23335678 |     10 |  10000 | avinash@gmail.com | M      | Clark            |
+|   9 | mahadavi | 1994-10-20 |   27 | 2017-03-10 | B-         |  93334678 |     20 |  15000 | avi34@gmail.com   | f      | tech support     |
+|  10 | anil     | 1994-10-10 |   27 | 2017-05-08 | B-         |  93224678 |     10 |  15000 | anil34@gmail.com  | M      | tester           |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+9 rows in set (0.00 sec)
+
+
+select record of eid=2;
+mysql> select * from emp where Eid=2;
++-----+-------+------------+------+------------+------------+-----------+--------+--------+----------------+--------+------------------+
+| Eid | Ename | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email          | gender | desgination      |
++-----+-------+------------+------+------------+------------+-----------+--------+--------+----------------+--------+------------------+
+|   2 | pari  | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237691 |     20 |  20000 | pari@gmail.com | f      | software enginer |
++-----+-------+------------+------+------------+------------+-----------+--------+--------+----------------+--------+------------------+
+1 row in set (0.00 sec)
+
+
+
+TO disply salary of the empoly incremented by 5000;
+
+
+mysql> select salary from emp where salary-5000;
++--------+
+| salary |
++--------+
+|  20000 |
+|  20000 |
+|  20000 |
+|  20000 |
+|  45000 |
+|  15000 |
+|  30000 |
+|  10000 |
+|  15000 |
+|  15000 |
++--------+
+10 rows in set (0.00 sec)
+
+mysql> select salary+5000 as salary from emp;
++--------+
+| salary |
++--------+
+|  25000 |
+|  25000 |
+|  25000 |
+|  25000 |
+|  50000 |
+|  20000 |
+|  35000 |
+|  15000 |
+|  20000 |
+|  20000 |
++--------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> select salary from emp where salary-5000;
++--------+
+| salary |
++--------+
+|  20000 |
+|  20000 |
+|  20000 |
+|  20000 |
+|  45000 |
+|  15000 |
+|  30000 |
+|  10000 |
+|  15000 |
+|  15000 |
++--------+
+10 rows in set (0.00 sec)
+
+mysql> select salary-5000 as salary from emp;
++--------+
+| salary |
++--------+
+|  15000 |
+|  15000 |
+|  15000 |
+|  15000 |
+|  40000 |
+|  10000 |
+|  25000 |
+|   5000 |
+|  10000 |
+|  10000 |
++--------+
+10 rows in set (0.00 sec)
+
+
+mysql> select salary from emp where salary*12;
++--------+
+| salary |
++--------+
+|  20000 |
+|  20000 |
+|  20000 |
+|  20000 |
+|  45000 |
+|  15000 |
+|  30000 |
+|  10000 |
+|  15000 |
+|  15000 |
++--------+
+10 rows in set (0.04 sec)
+
+mysql> select salary*12 as anuval from emp;
++--------+
+| anuval |
++--------+
+| 240000 |
+| 240000 |
+| 240000 |
+| 240000 |
+| 540000 |
+| 180000 |
+| 360000 |
+| 120000 |
+| 180000 |
+| 180000 |
++--------+
+10 rows in set (0.00 sec)
+
+parday salary
+
+
+mysql> select salary from emp where salary/30;
++--------+
+| salary |
++--------+
+|  20000 |
+|  20000 |
+|  20000 |
+|  20000 |
+|  45000 |
+|  15000 |
+|  30000 |
+|  10000 |
+|  15000 |
+|  15000 |
++--------+
+10 rows in set (0.03 sec)
+
+mysql> select salary/30 as parday from emp;
++-----------+
+| parday    |
++-----------+
+|  666.6667 |
+|  666.6667 |
+|  666.6667 |
+|  666.6667 |
+| 1500.0000 |
+|  500.0000 |
+| 1000.0000 |
+|  333.3333 |
+|  500.0000 |
+|  500.0000 |
++-----------+
+10 rows in set (0.00 sec)
+
+
+display the emp whoes job desination is software developer
+mysql> select * from emp where desgination ='software enginer';
++-----+-------+------------+------+------------+------------+-----------+--------+--------+-----------------+--------+------------------+
+| Eid | Ename | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email           | gender | desgination      |
++-----+-------+------------+------+------------+------------+-----------+--------+--------+-----------------+--------+------------------+
+|   1 | pooja | 1997-10-20 |   22 | 2019-10-20 | o+         |  45267891 |     10 |  20000 | pooja@gmail.com | f      | software enginer |
+|   2 | pari  | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237691 |     20 |  20000 | pari@gmail.com  | f      | software enginer |
++-----+-------+------------+------+------------+------------+-----------+--------+--------+-----------------+--------+------------------+
+2 rows in set (0.02 sec)
+
+
+excludeing deptno =20;
+mysql> select * from emp where deptno!=20;
++-----+--------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+| Eid | Ename  | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email             | gender | desgination      |
++-----+--------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+|   1 | pooja  | 1997-10-20 |   22 | 2019-10-20 | o+         |  45267891 |     10 |  20000 | pooja@gmail.com   | f      | software enginer |
+|   3 | yuraj  | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237611 |     30 |  20000 | yuraj@gmail.com   | M      | tester           |
+|   4 | sachin | 1996-10-20 |   23 | 2019-02-10 | B+         |  45137611 |     30 |  20000 | sachin@gmail.com  | M      | tester           |
+|   5 | megha  | 1996-10-20 |   23 | 2019-02-10 | B-         |  45132611 |     30 |  45000 | megha@gmail.com   | f      | HR               |
+|   7 | mahi   | 1994-10-20 |   27 | 2017-03-10 | o-         |  12335678 |     10 |  30000 | mahi@gmail.com    | M      | Manger           |
+|   8 | avinah | 1994-10-20 |   27 | 2017-03-10 | o-         |  23335678 |     10 |  10000 | avinash@gmail.com | M      | Clark            |
+|  10 | anil   | 1994-10-10 |   27 | 2017-05-08 | B-         |  93224678 |     10 |  15000 | anil34@gmail.com  | M      | tester           |
++-----+--------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+
+
+
+display record whoes salary less than 50000;
+mysql> select * from emp where salary<20000;
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+--------------+
+| Eid | Ename    | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email             | gender | desgination  |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+--------------+
+|   6 | mahesh   | 1996-10-20 |   23 | 2019-03-10 | B-         |  12345678 |     20 |  15000 | mahesh@gmail.com  | M      | tech support |
+|   8 | avinah   | 1994-10-20 |   27 | 2017-03-10 | o-         |  23335678 |     10 |  10000 | avinash@gmail.com | M      | Clark        |
+|   9 | mahadavi | 1994-10-20 |   27 | 2017-03-10 | B-         |  93334678 |     20 |  15000 | avi34@gmail.com   | f      | tech support |
+|  10 | anil     | 1994-10-10 |   27 | 2017-05-08 | B-         |  93224678 |     10 |  15000 | anil34@gmail.com  | M      | tester       |
++-----+----------+------------+-
+
+
+dislpay whoes age is less than 30;
+
+mysql> select * from emp where Age<30;
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+| Eid | Ename    | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email             | gender | desgination      |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+|   1 | pooja    | 1997-10-20 |   22 | 2019-10-20 | o+         |  45267891 |     10 |  20000 | pooja@gmail.com   | f      | software enginer |
+|   2 | pari     | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237691 |     20 |  20000 | pari@gmail.com    | f      | software enginer |
+|   3 | yuraj    | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237611 |     30 |  20000 | yuraj@gmail.com   | M      | tester           |
+|   4 | sachin   | 1996-10-20 |   23 | 2019-02-10 | B+         |  45137611 |     30 |  20000 | sachin@gmail.com  | M      | tester           |
+|   5 | megha    | 1996-10-20 |   23 | 2019-02-10 | B-         |  45132611 |     30 |  45000 | megha@gmail.com   | f      | HR               |
+|   6 | mahesh   | 1996-10-20 |   23 | 2019-03-10 | B-         |  12345678 |     20 |  15000 | mahesh@gmail.com  | M      | tech support     |
+|   7 | mahi     | 1994-10-20 |   27 | 2017-03-10 | o-         |  12335678 |     10 |  30000 | mahi@gmail.com    | M      | Manger           |
+|   8 | avinah   | 1994-10-20 |   27 | 2017-03-10 | o-         |  23335678 |     10 |  10000 | avinash@gmail.com | M      | Clark            |
+|   9 | mahadavi | 1994-10-20 |   27 | 2017-03-10 | B-         |  93334678 |     20 |  15000 | avi34@gmail.com   | f      | tech support     |
+|  10 | anil     | 1994-10-10 |   27 | 2017-05-08 | B-         |  93224678 |     10 |  15000 | anil34@gmail.com  | M      | tester           |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+-----------------
+
+
+display salary email mobail no whoes age is greter than 28;
+
+mysql> select Ename,email,mobail_no,salary from emp where Age<23;
++-------+-----------------+-----------+--------+
+| Ename | email           | mobail_no | salary |
++-------+-----------------+-----------+--------+
+| pooja | pooja@gmail.com |  45267891 |  20000 |
+| pari  | pari@gmail.com  |  45237691 |  20000 |
+| yuraj | yuraj@gmail.com |  45237611 |  20000 |
++-------+-----------------+-----------+--------+
+
+slary is less than or equal to 15000;,
+
+mysql> select * from emp where salary<=15000;
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+--------------+
+| Eid | Ename    | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email             | gender | desgination  |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+--------------+
+|   6 | mahesh   | 1996-10-20 |   23 | 2019-03-10 | B-         |  12345678 |     20 |  15000 | mahesh@gmail.com  | M      | tech support |
+|   8 | avinah   | 1994-10-20 |   27 | 2017-03-10 | o-         |  23335678 |     10 |  10000 | avinash@gmail.com | M      | Clark        |
+|   9 | mahadavi | 1994-10-20 |   27 | 2017-03-10 | B-         |  93334678 |     20 |  15000 | avi34@gmail.com   | f      | tech support |
+|  10 | anil     | 1994-10-10 |   27 | 2017-05-08 | B-         |  93224678 |     10 |  15000 | anil34@gmail.com  | M      | tester       |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+--------------+
+
+
+LOGICAL OPERATOR
+

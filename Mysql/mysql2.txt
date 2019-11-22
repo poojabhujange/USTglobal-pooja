@@ -1,0 +1,77 @@
+write a  qureay whe os working in deptno 20 as well as salary is greter than 25000
+select * from emp;
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+| Eid | Ename    | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email             | gender | desgination      |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+|   1 | pooja    | 1997-10-20 |   22 | 2019-10-20 | o+         |  45267891 |     10 |  20000 | pooja@gmail.com   | f      | software enginer |
+|   2 | pari     | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237691 |     20 |  20000 | pari@gmail.com    | f      | software enginer |
+|   3 | yuraj    | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237611 |     30 |  20000 | yuraj@gmail.com   | M      | tester           |
+|   4 | sachin   | 1996-10-20 |   23 | 2019-02-10 | B+         |  45137611 |     30 |  20000 | sachin@gmail.com  | M      | tester           |
+|   5 | megha    | 1996-10-20 |   23 | 2019-02-10 | B-         |  45132611 |     30 |  45000 | megha@gmail.com   | f      | HR               |
+|   6 | mahesh   | 1996-10-20 |   23 | 2019-03-10 | B-         |  12345678 |     20 |  15000 | mahesh@gmail.com  | M      | tech support     |
+|   7 | mahi     | 1994-10-20 |   27 | 2017-03-10 | o-         |  12335678 |     10 |  30000 | mahi@gmail.com    | M      | Manger           |
+|   8 | avinah   | 1994-10-20 |   27 | 2017-03-10 | o-         |  23335678 |     10 |  10000 | avinash@gmail.com | M      | Clark            |
+|   9 | mahadavi | 1994-10-20 |   27 | 2017-03-10 | B-         |  93334678 |     20 |  15000 | avi34@gmail.com   | f      | tech support     |
+|  10 | anil     | 1994-10-10 |   27 | 2017-05-08 | B-         |  93224678 |     10 |  15000 | anil34@gmail.com  | M      | tester           |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+------------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from emp where dept=20 and salary >25000;
+ERROR 1054 (42S22): Unknown column 'dept' in 'where clause'
+mysql> select * from emp where deptno=20 and salary >25000;
+Empty set (0.00 sec)
+
+mysql> select * from emp where deptno=20 and salary >20000;
+
+mysql> select * from emp where  not(desgination ='software enginer'or deptno =30);
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+--------------+
+| Eid | Ename    | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email             | gender | desgination  |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+--------------+
+|   6 | mahesh   | 1996-10-20 |   23 | 2019-03-10 | B-         |  12345678 |     20 |  15000 | mahesh@gmail.com  | M      | tech support |
+|   7 | mahi     | 1994-10-20 |   27 | 2017-03-10 | o-         |  12335678 |     10 |  30000 | mahi@gmail.com    | M      | Manger       |
+|   8 | avinah   | 1994-10-20 |   27 | 2017-03-10 | o-         |  23335678 |     10 |  10000 | avinash@gmail.com | M      | Clark        |
+|   9 | mahadavi | 1994-10-20 |   27 | 2017-03-10 | B-         |  93334678 |     20 |  15000 | avi34@gmail.com   | f      | tech support |
+|  10 | anil     | 1994-10-10 |   27 | 2017-05-08 | B-         |  93224678 |     10 |  15000 | anil34@gmail.com  | M      | tester       |
++-----+----------+------------+------+------------+------------+-----------+--------+--------+-------------------+--------+--------------+
+5 rows in set (0.00 sec)
+
+Empty set (0.00 sec)
+
+
+write a qurey to display who is working in dept no 10 and 20;
+mysql> select * from emp where deptno=20 and deptno=30;
+Empty set (0.00 sec)
+
+ write a q t display employe detaile whoes job designation is tester and whoes age is 25;
+mysql> select * from emp where desgination='tester' and age=25;
+Empty set (0.00 sec)
+
+
+who is working as tester or having slary equal30000
+mysql> select * from emp where desgination = 'tester' or salary = 30000;
++-----+--------+------------+------+------------+------------+-----------+--------+--------+------------------+--------+-------------+
+| Eid | Ename  | DOB        | Age  | Dofjoin    | bloodgroup | mobail_no | deptno | salary | email            | gender | desgination |
++-----+--------+------------+------+------------+------------+-----------+--------+--------+------------------+--------+-------------+
+|   3 | yuraj  | 1997-10-20 |   22 | 2019-10-10 | B+         |  45237611 |     30 |  20000 | yuraj@gmail.com  | M      | tester      |
+|   4 | sachin | 1996-10-20 |   23 | 2019-02-10 | B+         |  45137611 |     30 |  20000 | sachin@gmail.com | M      | tester      |
+|   7 | mahi   | 1994-10-20 |   27 | 2017-03-10 | o-         |  12335678 |     10 |  30000 | mahi@gmail.com   | M      | Manger      |
+|  10 | anil   | 1994-10-10 |   27 | 2017-05-08 | B-         |  93224678 |     10 |  15000 | anil34@gmail.com | M      | tester      |
++-----+--------+------------+------+------------+------------+-----------+--------+--------+------------------+--------+-------------+
+4 rows in set (0.00 sec)
+
+write a q to disaply name salary age from the emp table who is working in dept no 30 or 50;
+mysql> select Ename,salary,Age from emp where deptno = 30 or deptno = 50;
++--------+--------+------+
+| Ename  | salary | Age  |
++--------+--------+------+
+| yuraj  |  20000 |   22 |
+| sachin |  20000 |   23 |
+| megha  |  45000 |   23 |
++--------+--------+------+
+3 rows in set (0.00 sec)
+
+
+write a q to disaply name salary age from the emp table who is working in dept no 40 or 50;
+
+mysql> select Ename,salary,Age from emp where deptno = 40 or deptno = 50;
+Empty set (0.00 sec)
