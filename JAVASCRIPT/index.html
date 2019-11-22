@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript</title>
+    <script>
+        var age = 22;
+        console.log('age='+age);
+        var name = 'chota bhim';
+        console.log('name='+name);
+        var hashobbies = true;
+        console.log('has hobbies=' +hashobbies);
+        var data = null;
+        console.log('data=' +data);
+        var person;
+        console.log('person='+person);
+
+    </script>
+    <script src=date.js></script>
+</head>
+<body>
+    <script>
+        var fruits=['orange','mango','apple'];
+        console.log('fruits=',fruits);
+        console.log('fruit1=',fruits[0]);
+        console.log('fruits length=',fruits.length);
+
+        var person = {
+                        name:'alia',
+                        lastname:'ranbir',
+                        age:24,
+                        phoneno: 345679899,
+                        getfullname:function(){
+                            return this.name+' '+this.lastname                        }
+        }
+        var lastname=person.lastname;
+        console.log('lastname',lastname);
+        var personage=person.age;
+        console.log('age',personage);
+        var fullname=person.getfullname();
+        console.log('fullname',fullname);
+        console.log('===================')
+        var a =10;
+        var str='10';
+        if(a===str)
+        {
+            console.log('equale')
+        }
+        else{
+            console.log('not equale')
+        }
+
+        var a =10;
+        var str='10';
+        if(a!==str)
+        {
+            console.log('equale')
+        }
+        else{
+            console.log('not equale')
+        }
+
+        console.log('================')
+
+        var numbervalue=20;
+        console.log(typeof numbervalue);
+        var name='pooja'
+        console.log(typeof name)
+        var lname=null;
+        console.log(typeof lname)
+        var sub
+        console.log(typeof sub);
+        console.log('==========================')
+        
+    </script>
+    
+</body>
+</html>
