@@ -5,10 +5,16 @@
 <%@page import="com.ustglobal.springmvcassesment.dto.ProductBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
 <%
 	Custmar bean = (Custmar) session.getAttribute("bean");
-	ProductBean bean1=(ProductBean) session.getAttribute("bean1");
-%>
+if(bean!=null){
+	
+	out.print("Welcome "+ bean.getName());
+}else{
+	response.sendRedirect("./login");
+}
+	%>
 
 <!DOCTYPE html>
 <html>
@@ -16,11 +22,10 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body><br>
 	<a href="./changepassword">change password</a>
 	<a href="./logout" style="float: right;">logout</a>
-	<h2>
-		Welcome<%=bean.getName()%></h2>
+	
 	<fieldset>
 		<legend>Search Product</legend>
 		<form action="./search">
@@ -34,7 +39,7 @@
 		</form>
 	</fieldset>
 	<%
-		ProductBean productBean=(ProductBean) request.getAttribute("bean1");
+		ProductBean productBean=(ProductBean) request.getAttribute("bean");
 	%>
 	<%
 		if (productBean != null) {
@@ -49,6 +54,7 @@
 		<tr>
 			<td><%=productBean.getName()%></td>
 			<td><%=productBean.getPrice()%></td>
+			<td><button href="">Order</button>
 			
 		</tr>
 	</table>

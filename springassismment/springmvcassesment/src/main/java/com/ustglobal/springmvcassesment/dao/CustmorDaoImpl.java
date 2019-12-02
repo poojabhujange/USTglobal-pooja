@@ -1,6 +1,7 @@
 package com.ustglobal.springmvcassesment.dao;
 
 import javax.persistence.EntityManager;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ustglobal.springmvcassesment.dto.ProductBean;
 import com.ustglobal.springmvcassesment.dto.Custmar;
+
 
 @Repository
 public class CustmorDaoImpl implements CustmorDAO{
@@ -64,11 +66,10 @@ public class CustmorDaoImpl implements CustmorDAO{
 		return true;
 	}
 
-	@Override
-	public ProductBean searchProduct(String name) {
+	public ProductBean searchProduct(int id) {
 		
 		EntityManager manager=factory.createEntityManager();
-		return manager.find(ProductBean.class, name);
+		return manager.find(ProductBean.class, id);
 	}
 
 	@Override
@@ -77,4 +78,23 @@ public class CustmorDaoImpl implements CustmorDAO{
 		return manager.find(Custmar.class, id);
 	}
 
-}
+//	@Override
+//	public Order orderProduct(Order order) {
+//		try {
+//			EntityManager manager=factory.createEntityManager();
+//			manager.getTransaction().begin();
+//			manager.persist(order);
+//			manager.getTransaction().commit();
+//			manager.close();
+//			return order;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return order;
+//	}
+//		
+		
+		
+	}
+
+

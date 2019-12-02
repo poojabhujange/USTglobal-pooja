@@ -21,6 +21,8 @@ public class ProductBean {
 	private String name;
 	@Column
 	private int price;
+	
+	
 	public int getPid() {
 		return pid;
 	}

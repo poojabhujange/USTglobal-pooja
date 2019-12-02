@@ -1,6 +1,7 @@
 package com.ustglobal.springmvcassesment.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.ustglobal.springmvcassesment.dao.CustmorDAO;
@@ -28,8 +29,13 @@ public class CustmorServiceImpl implements CustmorService {
 		return dao.changePassword(id, password);
 	}
 
-	@Override
-	public ProductBean searchProduct(String name) {
-		return dao.searchProduct(name);
+	public ProductBean searchProduct(int id) {
+		return dao.searchProduct(id);
 	}
+
+//	@Override
+//	public Order orderProduct(Order order) {
+//		// TODO Auto-generated method stub
+//		return dao.orderProduct(order);
+//	}
 }

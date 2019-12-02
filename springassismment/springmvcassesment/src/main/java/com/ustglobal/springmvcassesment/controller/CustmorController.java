@@ -1,6 +1,7 @@
 package com.ustglobal.springmvcassesment.controller;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.ustglobal.springmvcassesment.dto.ProductBean;
 import com.ustglobal.springmvcassesment.dto.Custmar;
+
 import com.ustglobal.springmvcassesment.service.CustmorService;
 
 
@@ -78,6 +80,22 @@ public class CustmorController {
 		return "home";
 	}//end of home()
 	
+	
+
+	
+	@GetMapping("/search")
+	public String search(@RequestParam("id")int id,ModelMap map) {
+		ProductBean bean=service.searchProduct(id);
+		if(bean==null) {
+			map.addAttribute("msg","Data not found");
+		}
+		else {
+			map.addAttribute("bean",bean);
+		}
+		return "home";
+	}
+	
+	
 	@GetMapping("/changepassword")
 	public String changePassword(HttpServletRequest request) {
 		HttpSession session=request.getSession(false);
@@ -106,16 +124,22 @@ public class CustmorController {
 		return "login";
 	}//end of logout()
 	
-	@GetMapping("/search")
-	public String search(@RequestParam("name")String name,ModelMap map) {
-		ProductBean bean=service.searchProduct(name);
-		if(bean==null) {
-			map.addAttribute("msg","Data not found");
-		}
-		else {
-			map.addAttribute("bean",bean);
-		}
-		return "home";
+	@GetMapping("/order")
+	public String addorder() {
+		return "OrderProduct";
 	}
+//	
+//	@PostMapping("/order")
+//	public Order orderProduct(HttpServletRequest req, Order order,ModelMap map){
+//		
+//		Order order1 = service.orderProduct(order);
+//		
+//		Custmar c1 = (Custmar) req.getSession().getAttribute("c1");
+//		
+//		
+//	
+//		return order;
+//		
+//	}
 	
 }
