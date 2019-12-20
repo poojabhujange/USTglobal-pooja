@@ -1,0 +1,21 @@
+<div class="alert alert-danger" *ngIf='error'>{{error}}</div>
+
+<form class="col-md-4 offset-4  mt-5 mb-5 bg-light card card-body" #form="ngForm" (ngSubmit)="issuebook(form)">
+    <h1 class="bg-dark text-light text-center">Request Book</h1>
+   
+    <div class="form-group">
+        <input class="form-control" type="bookId" name="bookId" id="id" placeholder="Enter BookId.." #bookId="ngModel" ngModel required>
+
+    </div>
+    <div *ngIf="bookId.touched && bookId.invalid">
+        
+        <p class="alert alert-danger" *ngIf="bookId.errors.required">This field is requied</p>
+        
+   </div>
+  
+    <div>
+            <button type="reset" class="btn btn-primary float-right" [disabled]="form.invalid">Reset</button>
+        <button type="submit" class="btn btn-danger float-right" [disabled]="form.invalid">Request</button>
+        
+    </div>
+    </form>

@@ -1,0 +1,41 @@
+
+     <div class="card  text-black">
+      <div class="card-img-overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col"> 
+              <div class="container "> 
+                <table class="table table-bordered mt-2 table-hover " style="border-style: solid; border-width: 1px;">
+                  <thead>
+                    <tr class="text-center text-dark">
+                    <th>Id</th>
+                      <th>Book Name</th>
+                      <th>Author</th>
+                      <th>publisher</th>
+                      <th>available</th>
+                      <th>Request</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let book of books" class="text-center text-info">
+                      <td>{{book.book_id}}</td>
+                      <td>{{book.name}}</td>
+                      <td>{{book.author}}</td>
+                      <td>{{book.publisher}}</td>
+                      <td>{{book.available}}</td>
+                      <td><button class="btn btn-danger" routerLink="/request">Request</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div> 
+  
+
+
+
+

@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-danger">
+  <a class="navbar-brand" href="home">Library</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+          <a class="nav-link" routerLink=""><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav offset-9">
+      <li class="nav-item" *ngIf='!isLibrarian()'>
+        <a class="nav-link btn btn-dark text-light" routerLink="/register">Register</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item" *ngIf='isLibrarian()'>
+          <a class="nav-link" routerLink="/librarienhome">Librarian</a>
+      </li>
+      
+      <li class="nav-item" *ngIf='isStudent()'>
+          <a class="nav-link" routerLink="/studenthome">User</a>
+      </li>
+  </ul>
+
+  <form class="form-inline my-2 my-lg-0">  
+    <a class="nav-link text-light" *ngIf="isStudent" (click)="studentLogout()" routerLink="">Logout</a>
+    <a class="nav-link text-light" *ngIf="isLibrarian" (click)="librarianLogout()" routerLink="">Logout</a>
+
+  <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <div class="dropdown">
+        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Login As
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item"  href="login">student</a>
+          <a class="dropdown-item" href="#">librarien</a>
+        </div>
+      </div>
+  </ul>
+  </form>
+</div>
+</nav>
+
+  
