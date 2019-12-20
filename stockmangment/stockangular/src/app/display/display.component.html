@@ -1,0 +1,44 @@
+<form>
+     <div class="card  text-black">
+        <div class="card-img-overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col"> 
+                <div class="container "> 
+                  <table class="table table-bordered mt-2 table-hover " style="border-style: solid; border-width: 1px;">
+                    <thead>
+                      <tr class="text-center text-dark">
+                      <th>Id</th>
+                        <th>Product Name</th>
+                        <th>Company</th>
+                        <th>category</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Update</th>
+                        <th>Add to Card</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let productinfo of products" class="text-center text-info">
+                        <td>{{productinfo.id}}</td>
+                        <td>{{productinfo.name}}</td>
+                        <td>{{productinfo.company}}</td>
+                        <td>{{productinfo.category}}</td>
+                        <td>{{productinfo.quantity}}</td>
+                        <td>{{productinfo.price}}</td> 
+                       <td><button class="btn btn-danger" routerLink="/update">Update</button></td>
+                       <td><button class="btn btn-success" (click)="addcard(Product)">Card</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div> 
+  </form>
+  
+  
+  
+  

@@ -1,0 +1,48 @@
+
+
+
+<form class="col-md-4 offset-4  mt-5 mb-5 bg-light card card-body" #form="ngForm" (ngSubmit)="edit(form)">
+    <h1 class="bg-dark text-light text-center">update</h1>
+    
+    <div class="form-group">
+        <input class="form-control" type="number" name="id" id="id" placeholder="Enter id.." #name="ngModel" ngModel required>
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" type="text" name="name" id="name" placeholder="Enter book name.." #name="ngModel" ngModel required>
+    </div>
+
+
+    <div class="form-group">
+        <input class="form-control" type="text" name="company" id="company" placeholder="Enter company.." #company="ngModel" ngModel required>
+    </div>
+
+    
+
+ 
+   <div class="form-group">
+       <input class="form-control" type="text" name="category" id="category" placeholder="Enter category .." #category="ngModel" ngModel  required>
+   </div>
+
+   
+
+      <div class="form-group" >
+          <input class="form-control" type="number" name="quantity" id="quantity" placeholder="Enter quantity.." #quantity="ngModel" ngModel required>
+
+      </div> 
+       
+      
+      <div class="form-group" >
+        <input class="form-control" type="number" name="price" id="price" placeholder="Enter price.." #price="ngModel" ngModel required>
+    </div>
+
+   
+   
+    <div>
+        <button type="submit" class="btn btn-danger float-right" [disabled]="form.invalid">submit</button>
+    </div>
+ 
+</form>
+
+
+
